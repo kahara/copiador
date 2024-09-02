@@ -22,3 +22,6 @@ find . -type f -mmin +59 -printf '%P\n' | sort | while read filename; do
     echo $filename '→' $gzfilename
     aws s3 mv "${gzfilename}" "s3://${DESTINATION_BUCKET}/${gzfilename}"
 done
+
+# Remove empty directories
+find "${SOURCE_PATH}" -empty -type d -delete
