@@ -11,7 +11,7 @@ if [ -z "${DESTINATION_BUCKET}" ]; then
 fi
 
 cd $SOURCE_PATH
-find . -type f -mmin +90 -printf '%P\n' | sort | while read filename; do
+find . -type f -mmin +59 -printf '%P\n' | sort | while read filename; do
     if [ $(echo "${filename}" | grep '\.gz$') ]; then
 	echo "File appears to be gzipped already, skipping: ${filename}"
 	gzfilename="${filename}"
